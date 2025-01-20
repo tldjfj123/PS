@@ -38,6 +38,10 @@ public class Main {
     }
 
     static boolean isStartWithT(String s) {
+        if (s.length() < t.length()) {
+            return false;
+        }
+        
         int range = t.length();
 
         if (s.substring(0, range).equals(t)) {
