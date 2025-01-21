@@ -79,9 +79,14 @@ public class Main {
                     }
                 }
             }
+
+            if (x == 0 && y == 0) {
+                break;
+            }
         }
 
         System.out.println(res);
+
 
     }
 }
