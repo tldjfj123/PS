@@ -22,10 +22,16 @@ public class Main {
 
         int cnt = 0;
 
+        // 모든 조합 (순열) 탐색
         for (int i = 1; i <= n; i++) {
-            for (int j = i + 1; j <= n; j++) {
-                for (int k = j + 1; k <= n; k++) {
-                    if (checkCondition1(i, j, k) || checkCondition2(i, j, k)) {
+            for (int j = 1; j <= n; j++) {
+                for (int k = 1; k <= n; k++) {
+                    // 첫 번째 조합과 2 이내 거리인지 확인
+                    boolean firstUnlock = inRange(a1, i) && inRange(b1, j) && inRange(c1, k);
+                    // 두 번째 조합과 2 이내 거리인지 확인
+                    boolean secondUnlock = inRange(a2, i) && inRange(b2, j) && inRange(c2, k);
+
+                    if (firstUnlock || secondUnlock) {
                         cnt++;
                     }
                 }
@@ -35,17 +41,11 @@ public class Main {
         System.out.println(cnt);
     }
 
-    static boolean checkCondition1(int a, int b, int c) {
-        return check(a1, a) && check(b1, b) && check(c1, c);
-    }
+    // 거리 계산 (원형 구조 반영)
+    static boolean inRange(int a, int b) {
+        int range1 = Math.abs(a - b);
+        int range2 = n - range1; // 원형이므로 반대편 거리 계산
 
-    static boolean checkCondition2(int a, int b, int c) {
-        return check(a2, a) && check(b2, b) && check(c2, c);
-    }
-
-    static boolean check(int x, int y) {
-        int directDist = Math.abs(x - y);
-        int wrapDist = n - directDist;  // ✅ 원형 거리 올바르게 계산
-        return Math.min(directDist, wrapDist) <= 2;
+        return Math.min(range1, range2) <= 2;
     }
 }
