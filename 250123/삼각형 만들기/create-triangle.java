@@ -22,7 +22,7 @@ public class Main {
             for (int j = i + 1; j < n; j++) {
                 for (int k = j + 1; k < n; k++) {
                     if (isRightTriangle(arr[i], arr[j], arr[k])) {
-                        maxArea = Math.max(maxArea, getTriangleWidth(arr[i], arr[j], arr[k]));
+                        maxArea = Math.max(maxArea, getTriangleArea(arr[i], arr[j], arr[k]));
                     }
                 }
             }
@@ -38,9 +38,21 @@ public class Main {
                (p2[1] == p3[1] && p2[0] == p1[0]);    // p2-p3 (x축 평행), p2-p1 (y축 평행)
     }
 
-    // 기존 코드의 신발끈 공식(외적) 활용
-    static int getTriangleWidth(int[] p1, int[] p2, int[] p3) {
-        return Math.abs((p1[0] * p2[1] + p2[0] * p3[1] + p3[0] * p1[1]) - 
-                        (p2[0] * p1[1] + p3[0] * p2[1] + p1[0] * p3[1]));
+    // 직각 삼각형 넓이 계산
+    static int getTriangleArea(int[] p1, int[] p2, int[] p3) {
+        int base = 0, height = 0;
+
+        if (p1[1] == p2[1]) { // p1 - p2가 x축과 평행한 변
+            base = Math.abs(p1[0] - p2[0]);
+            height = Math.abs(p1[1] - p3[1]); // p1 - p3가 y축과 평행한 변
+        } else if (p1[1] == p3[1]) { // p1 - p3가 x축과 평행한 변
+            base = Math.abs(p1[0] - p3[0]);
+            height = Math.abs(p1[1] - p2[1]); // p1 - p2가 y축과 평행한 변
+        } else { // p2 - p3가 x축과 평행한 변
+            base = Math.abs(p2[0] - p3[0]);
+            height = Math.abs(p2[1] - p1[1]); // p2 - p1가 y축과 평행한 변
+        }
+
+        return base * height; // 삼각형 넓이 (1/2 없이 직사각형 면적)
     }
 }
