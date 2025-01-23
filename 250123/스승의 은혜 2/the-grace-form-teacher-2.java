@@ -20,6 +20,8 @@ public class Main {
         //반값 쓸 선물을 for문 통해 완전 탐색 
         // 예산 초과하면 break 하고 결과 최신화
 
+        Arrays.sort(arr);
+
         int res = 0;
 
         for (int i = 0; i < n; i++) {
