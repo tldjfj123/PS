@@ -15,44 +15,42 @@ public class Main {
             arr[i][1] = Integer.parseInt(st.nextToken());
         }
 
-        int maxArea = 0;
+        int res = 0;
 
-        // 모든 점 조합 중 조건에 맞는 삼각형 찾기
+        // 점 3개 고르고 최댓값 구하기
         for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                for (int k = j + 1; k < n; k++) {
-                    if (isRightTriangle(arr[i], arr[j], arr[k])) {
-                        maxArea = Math.max(maxArea, getTriangleArea(arr[i], arr[j], arr[k]));
+            for (int j = i+1; j < n; j++) {
+                for (int k = j+1; k < n; k++) {
+                    if (isValidTriangle(arr[i], arr[j], arr[k])) {
+                        res = Math.max(res, getWidth(arr[i], arr[j], arr[k]));
                     }
                 }
             }
         }
 
-        System.out.println(maxArea * 2);
+        System.out.println(res);
     }
 
-    // x축에 평행한 변 & y축에 평행한 변을 가지는 삼각형인지 확인
-    static boolean isRightTriangle(int[] p1, int[] p2, int[] p3) {
-        return (p1[1] == p2[1] && p1[0] == p3[0]) ||  // p1-p2 (x축 평행), p1-p3 (y축 평행)
-               (p1[1] == p3[1] && p1[0] == p2[0]) ||  // p1-p3 (x축 평행), p1-p2 (y축 평행)
-               (p2[1] == p3[1] && p2[0] == p1[0]);    // p2-p3 (x축 평행), p2-p1 (y축 평행)
-    }
-
-    // 직각 삼각형 넓이 계산
-    static int getTriangleArea(int[] p1, int[] p2, int[] p3) {
-        int base = 0, height = 0;
-
-        if (p1[1] == p2[1]) { // p1 - p2가 x축과 평행한 변
-            base = Math.abs(p1[0] - p2[0]);
-            height = Math.abs(p1[1] - p3[1]); // p1 - p3가 y축과 평행한 변
-        } else if (p1[1] == p3[1]) { // p1 - p3가 x축과 평행한 변
-            base = Math.abs(p1[0] - p3[0]);
-            height = Math.abs(p1[1] - p2[1]); // p1 - p2가 y축과 평행한 변
-        } else { // p2 - p3가 x축과 평행한 변
-            base = Math.abs(p2[0] - p3[0]);
-            height = Math.abs(p2[1] - p1[1]); // p2 - p1가 y축과 평행한 변
+    static boolean isValidTriangle(int[] x, int[] y, int[] z) {
+        // 중간점이 x 인 경우
+        if (x[1] == y[1] && x[0] == z[0] || x[1] == z[1] && x[0] == y[0]) {
+            return true;
         }
 
-        return base * height; // 삼각형 넓이 (1/2 없이 직사각형 면적)
+        // 중간점이 y인 경우
+        if (y[1] == z[1] && y[0] == x[0] || y[1] == x[1] && y[0] == z[0]) {
+            return true;
+        }
+
+        // 중간점이 z인 경우
+        if (z[1] == x[1] && z[0] == y[0] || z[1] == y[1] && z[0] == x[0]) {
+            return true; 
+        }
+
+        return false;
+    }
+
+    static int getWidth(int[] x, int[] y, int[] z) {
+        return Math.abs((x[0]*y[1] + y[0]*z[1] + z[0]*x[1]) - (y[0]*x[0] + z[0]*y[1] + x[0]*z[1]));
     }
 }
