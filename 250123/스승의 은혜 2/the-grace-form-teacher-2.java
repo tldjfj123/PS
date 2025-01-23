@@ -24,6 +24,7 @@ public class Main {
 
         for (int i = 0; i < n; i++) {
             int budget = b;
+            int cnt = 0;
 
             for (int j = 0; j < n; j++) {
                 if (i == j) {
@@ -33,9 +34,13 @@ public class Main {
                 }
 
                 if (budget < 0) {
-                    res = Math.max(res, j);
+                    break;
+                } else {
+                    cnt++;
                 }
             }
+
+            res = Math.max(cnt, res);
         }
 
         System.out.println(res);
