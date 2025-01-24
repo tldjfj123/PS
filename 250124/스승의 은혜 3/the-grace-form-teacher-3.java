@@ -12,7 +12,7 @@ class Gift implements Comparable<Gift> {
 
     @Override
     public int compareTo(Gift g) {
-        return Integer.compare(this.deliveryFee, g.deliveryFee);
+        return Integer.compare((this.price + this.deliveryFee), (g.price + g.deliveryFee));
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Main {
 
             for (int j = 0; j < n; j++) {
                 if (i == j) {
-                    budget -= ((arr[j].price / 2) + arr[j].deliveryFee);
+                    budget -= (arr[j].price / 2 + arr[j].deliveryFee);
 
                     if (budget < 0) {
                         res = Math.max(cnt, res);
