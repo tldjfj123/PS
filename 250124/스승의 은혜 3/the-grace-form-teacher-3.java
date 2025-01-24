@@ -12,7 +12,7 @@ class Gift implements Comparable<Gift> {
 
     @Override
     public int compareTo(Gift g) {
-        return Integer.compare((this.price + this.deliveryFee), (g.price + g.deliveryFee));
+        return Integer.compare(this.deliveryFee, g.deliveryFee);
     }
 
     @Override
