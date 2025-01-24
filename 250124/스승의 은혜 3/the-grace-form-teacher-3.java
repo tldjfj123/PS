@@ -56,7 +56,7 @@ public class Main {
 
             for (int j = 0; j < n; j++) {
                 if (i == j) {
-                    budget -= (arr[i].price / 2 + arr[i].deliveryFee);
+                    budget -= ((arr[j].price / 2) + arr[j].deliveryFee);
 
                     if (budget < 0) {
                         res = Math.max(cnt, res);
@@ -64,7 +64,7 @@ public class Main {
                         cnt++;
                     }
                 } else {
-                    budget -= (arr[i].price + arr[i].deliveryFee);
+                    budget -= (arr[j].price + arr[j].deliveryFee);
 
                     if (budget < 0) {
                         res = Math.max(cnt, res);
