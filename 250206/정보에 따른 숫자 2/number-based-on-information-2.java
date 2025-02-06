@@ -21,7 +21,10 @@ public class Main {
             String v = st.nextToken();
             int idx = Integer.parseInt(st.nextToken());
 
-            arr[idx] = v;
+            if (idx <= b) {
+                arr[idx] = v;
+            }
+            
         }
 
         int cnt = 0;
