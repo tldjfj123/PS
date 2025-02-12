@@ -26,8 +26,9 @@ public class Main {
 
         // x, y 범위 내에서 각각 x, y를 정하여 좌표평면을 그려봄
         int res = Integer.MAX_VALUE;
-        for (int i = 2; i <= maxX; i += 2) {
-            for (int j = 2; j <= maxY; j += 2) {
+        for (int i = 0; i <= maxX; i += 2) {
+            for (int j = 0; j <= maxY; j += 2) {
+                // System.out.println(calc(i, j));
                 res = Math.min(res, calc(i, j));
             }
         }
