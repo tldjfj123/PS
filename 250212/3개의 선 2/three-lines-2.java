@@ -61,13 +61,16 @@ public class Main {
                         }
                     }
 
+                    int cnt = 0;
                     for (int t = 0; t < n; t++) {
-                        if (!check[t]) {
-                            break;
+                        if (check[t]) {
+                            cnt++;
                         }
                     }
 
-                    return true;
+                    if (cnt == n) {
+                        return true;
+                    }
                 }
             }
         }
@@ -85,13 +88,17 @@ public class Main {
                         }
                     }
 
+                    int cnt = 0;
                     for (int t = 0; t < n; t++) {
-                        if (!check[t]) {
-                            break;
+                        if (check[t]) {
+                            cnt++;
                         }
-                    }
+                    }   
 
-                    return true;
+
+                    if (cnt == n) {
+                        return true;
+                    }
                 }
             }
         }
@@ -110,13 +117,18 @@ public class Main {
                         }
                     }
 
+                    int cnt = 0;
                     for (int t = 0; t < n; t++) {
-                        if (!check[t]) {
-                            break;
+                        if (check[t]) {
+                            cnt++;
                         }
                     }
 
-                    return true;
+
+
+                    if (cnt == n) {
+                        return true;
+                    }
                 }
             }
         }
@@ -134,13 +146,18 @@ public class Main {
                         }
                     }
 
+                    int cnt = 0;
                     for (int t = 0; t < n; t++) {
-                        if (!check[t]) {
-                            break;
+                        if (check[t]) {
+                            cnt++;
                         }
                     }
 
-                    return true;
+
+
+                    if (cnt == n) {
+                        return true;
+                    }
                 }
             }
         }
