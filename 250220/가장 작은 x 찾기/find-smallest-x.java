@@ -18,7 +18,7 @@ public class Main {
         }
 
         // 첫 항 사이값들 모두 비교하면서 적합한지 확인
-        for (int i = arr[0][0]; i <= arr[0][1]; i++) {
+        for (int i = 1; i <= 10000; i++) {
             boolean isOk = true;
             int v = i;
 
