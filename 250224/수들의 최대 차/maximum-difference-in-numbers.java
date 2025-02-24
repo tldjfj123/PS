@@ -28,13 +28,12 @@ public class Main {
             int cnt = 0;
 
             for (int j = 0; j < n; j++) {
-                if (i == j) {
-                    continue;
-                }
+                int calc = arr[j] - arr[i];
 
-                if (Math.abs(arr[i] - arr[j]) <= k) {
+                if (0 <= calc && calc <= k) {
                     cnt++;
                 }
+                
             }
 
             // System.out.println(arr[i] + " " + cnt);
