@@ -38,7 +38,7 @@ public class Main {
             res = Math.max(cnt, res);
         }
 
-        System.out.println(res);
+        System.out.println(res-1);
 
 
 
