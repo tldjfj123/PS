@@ -28,6 +28,10 @@ public class Main {
             int cnt = 0;
 
             for (int j = 0; j < n; j++) {
+                if (i == j) {
+                    continue;
+                }
+
                 if (Math.abs(arr[i] - arr[j]) <= k) {
                     cnt++;
                 }
@@ -38,7 +42,7 @@ public class Main {
             res = Math.max(cnt, res);
         }
 
-        System.out.println(res-1);
+        System.out.println(res);
 
 
 
