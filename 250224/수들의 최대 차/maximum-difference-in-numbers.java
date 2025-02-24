@@ -12,26 +12,35 @@ public class Main {
         k = Integer.parseInt(st.nextToken());
         
         arr = new int[n];
+        int max = 0;
+        int min = 1001;
+
         for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(br.readLine());
+            int v = Integer.parseInt(br.readLine());
+            arr[i] = v;
+            max = Math.max(max, v);
+            min = Math.min(min, v);
         }
+    
+        int res = 0;
 
-        Arrays.sort(arr);
+        for (int i = 0; i < n; i++) { //기준 수 고르기
+            int cnt = 0;
 
-        int gap = 0;
-        for (int i = 2; i <= n; i++) {
-            
-            int[] tmp = new int[i];
-
-            for (int j = 0; j < i; j++) {
-                tmp[j] = arr[j];    
+            for (int j = 0; j < n; j++) {
+                if (Math.abs(arr[i] - arr[j]) <= k) {
+                    cnt++;
+                }
             }
 
-            if (Math.abs(tmp[0] - tmp[i-1]) <= k) {
-                gap = Math.max(i, gap);
-            }
+            // System.out.println(arr[i] + " " + cnt);
+
+            res = Math.max(cnt, res);
         }
 
-        System.out.println(gap);
+        System.out.println(res);
+
+
+
     }
 }
