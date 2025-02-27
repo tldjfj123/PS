@@ -35,6 +35,7 @@ public class Main {
         int res = 0;
         for (int i = 0; i < 2001; i++) {
             if (arr[i] >= 2) {
+                // System.out.println(i);
                 res++;
             }
         }
