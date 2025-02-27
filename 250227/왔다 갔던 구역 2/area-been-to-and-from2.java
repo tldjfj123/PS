@@ -17,15 +17,17 @@ public class Main {
             int v = Integer.parseInt(st.nextToken());
             String o = st.nextToken();
 
+            // arr[idx]++; // 출발점 +1 
+            
             if (o.equals("L")) {
                 for (int j = 0; j < v; j++) {
-                    arr[idx]++;
                     idx--;
+                    arr[idx]++;
                 }
             } else {
                 for (int j = 0; j < v; j++) {
-                    arr[idx]++;
                     idx++;
+                    arr[idx]++;
                 }
             }
         }       
