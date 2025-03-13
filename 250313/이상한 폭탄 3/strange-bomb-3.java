@@ -56,8 +56,8 @@ public class Main {
     // }
 
     static int[] getRange(int v) {
-        int left = v - 3;
-        int right = v + 3;
+        int left = v - k;
+        int right = v + k;
 
         // left가 0보다 작으면 0으로
         if (left < 0) {
